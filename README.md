@@ -1,12 +1,12 @@
-# 🐧 Pinguinskat
+#  Pinguinskat
 
 Ein Java-basiertes Skat-Kartenspiel mit grafischer Benutzeroberfläche, das als Teil einer Spielbibliothek entwickelt wurde.
 
-## 📋 Überblick
+##  Überblick
 
 Pinguinskat ist ein vollständig funktionsfähiges Skat-Spiel, das in Java mit Swing implementiert wurde. Das Spiel bietet eine intuitive grafische Benutzeroberfläche und verwaltet automatisch die Spielregeln, Kartenverteilung und Punktevergabe.
 
-## 🎮 Features
+##  Features
 
 - **Vollständiges Skat-Spiel** mit allen Standardregeln
 - **Grafische Benutzeroberfläche** mit Kartenbildern und Spieltisch
@@ -15,11 +15,11 @@ Pinguinskat ist ein vollständig funktionsfähiges Skat-Spiel, das in Java mit S
 - **Responsive Design** mit 1400x800 Auflösung
 - **Eingebettet in Spielbibliothek** mit Hauptmenü
 
-## 🏗️ Projektstruktur
+## Projektstruktur
 
 ```
 Pinguinskat/
-├── src/
+├── src/                         # Quellcode (Java-Dateien)
 │   ├── Main.java                 # Hauptklasse der Spielbibliothek
 │   ├── menu/                     # Menü-System
 │   │   ├── Game.java            # Spiel-Objekt für Menü
@@ -38,10 +38,12 @@ Pinguinskat/
 ├── res/                         # Ressourcen (Bilder, Icons)
 ├── data/                        # Spielerdaten
 │   └── scoreboard.csv          # Scoreboard-Daten
-└── out/                         # Kompilierte Klassen
+└── out/                         # Kompilierte Klassen (.class-Dateien)
 ```
 
-## 🚀 Installation & Ausführung
+> **Wichtig:** Die `.class`-Dateien werden beim Kompilieren automatisch in das `out/`-Verzeichnis erstellt und sollten nicht im `src/`-Verzeichnis landen.
+
+## Installation & Ausführung
 
 ### Voraussetzungen
 - Java 8 oder höher
@@ -49,24 +51,61 @@ Pinguinskat/
 
 ### Kompilierung und Ausführung
 
+#### Mit Makefile (empfohlen)
+
 1. **Spielbibliothek starten:**
    ```bash
-   javac -cp src src/Main.java
-   java -cp src Main
+   make run
    ```
 
 2. **Skat direkt starten:**
    ```bash
-   javac -cp src src/skat/Skat.java
-   java -cp src skat.Skat
+   make skat
    ```
 
-3. **Mit IntelliJ IDEA:**
-   - Projekt öffnen
-   - `Main.java` ausführen für die Spielbibliothek
-   - `Skat.java` ausführen für direktes Skat-Spiel
+3. **Nur kompilieren:**
+   ```bash
+   make compile
+   ```
 
-## 🎯 Spielregeln
+4. **Aufräumen:**
+   ```bash
+   make clean
+   ```
+
+5. **Hilfe anzeigen:**
+   ```bash
+   make help
+   ```
+
+#### Manuell mit javac
+
+1. **Spielbibliothek starten:**
+   ```bash
+   # Kompilieren in out-Verzeichnis
+   javac -d out -cp src src/Main.java src/menu/*.java
+   java -cp out Main
+   ```
+
+2. **Skat direkt starten:**
+   ```bash
+   # Kompilieren in out-Verzeichnis
+   javac -d out -cp src src/skat/*.java src/menu/*.java
+   java -cp out skat.Skat
+   ```
+
+3. **Alle Klassen kompilieren:**
+   ```bash
+   # Kompiliert alle Java-Dateien in das out-Verzeichnis
+   javac -d out -cp src src/**/*.java
+   ```
+
+#### Mit IntelliJ IDEA
+- Projekt öffnen
+- `Main.java` ausführen für die Spielbibliothek
+- `Skat.java` ausführen für direktes Skat-Spiel
+
+## Spielregeln
 
 Das Spiel folgt den Standard-Skat-Regeln:
 - 3 Spieler (2 Computer + 1 Mensch)
@@ -76,14 +115,14 @@ Das Spiel folgt den Standard-Skat-Regeln:
 - Stich-Spiel
 - Punkteberechnung
 
-## 📊 Scoreboard
+## Scoreboard
 
 Das Spiel speichert automatisch Spielergebnisse in `data/scoreboard.csv`:
 - Datum und Uhrzeit
 - Spielername
 - Erreichte Punkte
 
-## 🛠️ Technische Details
+## Technische Details
 
 - **Sprache:** Java
 - **GUI Framework:** Swing
@@ -92,7 +131,7 @@ Das Spiel speichert automatisch Spielergebnisse in `data/scoreboard.csv`:
 - **Threading:** Game Loop in separatem Thread
 - **Datenformat:** CSV für Scoreboard
 
-## 🎨 Ressourcen
+## Ressourcen
 
 Das Spiel verwendet verschiedene Bildressourcen:
 - `icon.png` - Anwendungsicon
@@ -101,17 +140,17 @@ Das Spiel verwendet verschiedene Bildressourcen:
 - `rückseite.png` - Kartenrückseite
 - `Bib.jpeg` - Spielbibliothek-Hintergrund
 
-## 🧪 Tests
+## Tests
 
 Das Projekt enthält Test-Klassen:
 - `Tests.java` - Skat-spezifische Tests
 - `TestMain.java` - Allgemeine Tests
 
-## 📝 Lizenz
+## Lizenz
 
 Dieses Projekt ist für private Zwecke entwickelt worden.
 
-## 👨‍💻 Autor
+## Autor
 
 Entwickelt von Tom Tiedtke
 
